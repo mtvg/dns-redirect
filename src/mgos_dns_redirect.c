@@ -47,9 +47,9 @@ bool mgos_dns_redirect_init(void) {
   if (strlen(mgos_sys_config_get_dns_redirect()) > 0) {
     struct mg_connection *c = mg_bind(mgos_get_mgr(), "udp://:53", ev_handler, 0);
     mg_set_protocol_dns(c);
-    
-    uint8 on = 1;
-    wifi_softap_set_dhcps_offer_option(OFFER_ROUTER, &on);
   }
+    
+  uint8 on = 1;
+  wifi_softap_set_dhcps_offer_option(OFFER_ROUTER, &on);
   return true;
 }
